@@ -5,6 +5,12 @@
 # =====================================================================
 set -euo pipefail
 
+# Verificar sistema operativo (los scripts estan probados en Ubuntu 22.04)
+OS_VER="$(. /etc/os-release && echo "$VERSION_ID")"
+if [[ "$OS_VER" != "22.04" ]]; then
+  echo "ERROR: esta instancia tiene Ubuntu $OS_VER. Relanza la EC2 con la AMI 'Ubuntu Server 22.04 LTS'."; exit 1
+fi
+
 # ---------------- CONFIG ----------------
 DOMAIN="raul-zerotrust.duckdns.org"
 REPO_BACK="https://github.com/Raul-T2/zerotrust-backend.git"

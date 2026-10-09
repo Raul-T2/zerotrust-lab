@@ -1,16 +1,22 @@
 #!/bin/bash
 # =====================================================================
 # INSTANCIA FRONTEND (VPC 1) - Ubuntu 22.04
-# Uso:  nano frontend-setup.sh   (edita CONFIG)   ->   bash frontend-setup.sh
+# Uso:  DUCK_TOKEN="tu-token" bash frontend-setup.sh
 # NO subas este archivo con tu token a GitHub.
 # =====================================================================
 set -euo pipefail
 
+# Verificar sistema operativo (los scripts estan probados en Ubuntu 22.04)
+OS_VER="$(. /etc/os-release && echo "$VERSION_ID")"
+if [[ "$OS_VER" != "22.04" ]]; then
+  echo "ERROR: esta instancia tiene Ubuntu $OS_VER. Relanza la EC2 con la AMI 'Ubuntu Server 22.04 LTS'."; exit 1
+fi
+
 # ---------------- CONFIG (edita estas 5 lineas) ----------------
 DOMAIN="raul-zerotrust.duckdns.org"
 DUCK_SUB="raul-zerotrust"
-DUCK_TOKEN="PEGA_AQUI_TU_TOKEN"
-BACKEND_IP="10.X.X.X"          # IP PRIVADA de la EC2 del backend
+DUCK_TOKEN="${DUCK_TOKEN:-PEGA_AQUI_TU_TOKEN}"   # mejor: DUCK_TOKEN=tu-token bash frontend-setup.sh
+BACKEND_IP="${BACKEND_IP:-10.0.1.10}"   # IP PRIVADA fija que le pones a ec2-backend al lanzarla
 REPO_FRONT="https://github.com/Raul-T2/zerotrust-frontend.git"
 # ---------------------------------------------------------------
 
