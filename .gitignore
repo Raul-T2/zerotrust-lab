@@ -1,0 +1,3 @@
+# Nunca guardes aqui tu token real de DuckDNS
+*.pem
+.env

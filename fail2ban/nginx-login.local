@@ -1,0 +1,10 @@
+# /etc/fail2ban/jail.d/nginx-login.local
+[nginx-login]
+enabled  = true
+filter   = nginx-login
+port     = http,https
+logpath  = /var/log/nginx/access.log
+# 3 intentos fallidos dentro de 10 minutos => IP bloqueada 10 minutos
+maxretry = 3
+findtime = 10m
+bantime  = 10m
