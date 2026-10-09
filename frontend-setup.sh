@@ -11,10 +11,10 @@ DOMAIN="raul-zerotrust.duckdns.org"
 DUCK_SUB="raul-zerotrust"
 DUCK_TOKEN="PEGA_AQUI_TU_TOKEN"
 BACKEND_IP="10.X.X.X"          # IP PRIVADA de la EC2 del backend
-REPO_FRONT="https://github.com/Raul-T2/NOMBRE_REPO_FRONTEND.git"
+REPO_FRONT="https://github.com/Raul-T2/zerotrust-frontend.git"
 # ---------------------------------------------------------------
 
-if [[ "$DUCK_TOKEN" == PEGA_* || "$BACKEND_IP" == 10.X* || "$REPO_FRONT" == *NOMBRE_REPO* ]]; then
+if [[ "$DUCK_TOKEN" == PEGA_* || "$BACKEND_IP" == 10.X* ]]; then
   echo "Edita primero la seccion CONFIG del script."; exit 1
 fi
 HERE="$(cd "$(dirname "$0")" && pwd)"

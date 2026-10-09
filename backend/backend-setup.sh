@@ -7,12 +7,12 @@ set -euo pipefail
 
 # ---------------- CONFIG ----------------
 DOMAIN="raul-zerotrust.duckdns.org"
-REPO_BACK="https://github.com/Raul-T2/NOMBRE_REPO_BACKEND.git"
+REPO_BACK="https://github.com/Raul-T2/zerotrust-backend.git"
 DEMO_USER="admin"
 DEMO_PASSWORD="Admin123!"      # solo para el laboratorio
 # ----------------------------------------
 
-if [[ "$REPO_BACK" == *NOMBRE_REPO* ]]; then echo "Edita primero la seccion CONFIG."; exit 1; fi
+
 
 echo "== 1/5 Paquetes y Node.js 22"
 sudo apt-get update -y
